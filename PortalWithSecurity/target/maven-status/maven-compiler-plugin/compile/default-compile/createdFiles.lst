@@ -1,0 +1,17 @@
+com\edu\portal\configuration\CustomSuccessHandler.class
+com\edu\portal\configuration\HelloWorldConfiguration.class
+com\edu\portal\service\UserServiceImpl.class
+com\edu\portal\dao\UserDao.class
+com\edu\portal\dao\UserDaoImpl.class
+com\edu\portal\dao\AbstractDao.class
+com\edu\portal\configuration\HibernateConfiguration.class
+com\edu\portal\model\State.class
+com\edu\portal\model\UserProfileType.class
+com\edu\portal\service\UserService.class
+com\edu\portal\configuration\SecurityWebApplicationInitializer.class
+com\edu\portal\service\CustomUserDetailsService.class
+com\edu\portal\controller\HelloWorldController.class
+com\edu\portal\configuration\SecurityConfiguration.class
+com\edu\portal\configuration\SpringMvcInitializer.class
+com\edu\portal\model\UserProfile.class
+com\edu\portal\model\User.class
