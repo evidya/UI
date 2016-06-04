@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="evidyaUI">
 <head>
@@ -20,10 +18,11 @@
 <body>
 
 <div ng-controller="teacherController" class="container-fluid" >
-               <h2 class="page-title">Teacher Registration</h2>
+             
 	<div class="col-md-2">
 	</div>
 	<div class="col-md-8">
+	  <h2 class="page-title">Teacher Registration</h2>
 		 <ul class="nav nav-pills ">
    			 <li class="active"><a data-toggle="pill" href="#home">Basic info</a></li>
     		<li><a data-toggle="pill" href="#menu1">Subject</a></li>
@@ -72,10 +71,9 @@
                             </div>
                            <div class="row form-group">
  							<label class="col-md-2">School Type : </label>
-                                <label class="checkbox-inline col-md-2"><input class="form-control input-sm" type="checkbox"  name="cSchoolType" ng-true-value="1" ng-false-value="0" value="Elem" ng-model="TeacherData.SchoolType.Elem">Elementary</label>
-								<label class="checkbox-inline col-md-2"><input class="form-control input-sm" type="checkbox"  name="cSchoolType"  ng-true-value="1" ng-false-value="0" value="Secondary" ng-model="TeacherData.SchoolType.Secondary">Secondary</label>
-								<label class="checkbox-inline col-md-2"><input class="form-control input-sm" type="checkbox"  name="cSchoolType"  ng-true-value="1" ng-false-value="0" value="High" ng-model="TeacherData.SchoolType.Highschool">HighSchool</label>
-                            
+                                <label class="checkbox-inline col-md-2"><input  type="checkbox"  name="cSchoolType" ng-true-value="1" ng-false-value="0" value="Elem" ng-model="TeacherData.SchoolType.Elem">Elementary</label>
+								<label class="checkbox-inline col-md-2"><input  type="checkbox"  name="cSchoolType"  ng-true-value="1" ng-false-value="0" value="Secondary" ng-model="TeacherData.SchoolType.Secondary">Secondary</label>
+								<label class="checkbox-inline col-md-2"><input  type="checkbox"  name="cSchoolType"  ng-true-value="1" ng-false-value="0" value="High" ng-model="TeacherData.SchoolType.Highschool">HighSchool</label>
                         </div>
                         
                          <div class="row form-group">
@@ -109,7 +107,7 @@
                  	
                     <table ng-show="!IsLogedIn">
                  	<tr>
-                            <td>Already a registered User ? </td>
+                            <td>Already a registered User ? &nbsp; &nbsp;</td>
                             <td>
                                 <input type="submit" value="Login" class="btn btn-success" />
                             </td>
