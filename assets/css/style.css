@@ -1,4 +1,11 @@
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #FFA233;
+}
 
+.menu-color {
+	color : #FFFFFF;
+}
 .panel-title
 {
 	font-size: 14px;

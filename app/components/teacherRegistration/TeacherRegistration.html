@@ -5,34 +5,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Teacher Registration</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href='./css/style.css' rel="stylesheet" type="text/css"></link>
-<link href='./css/css/font-awesome.css' rel="stylesheet" type="text/css"></link>
+<link href='/assets/css/style.css' rel="stylesheet" type="text/css"></link>
+<link href='/assets/css/font-awesome.css' rel="stylesheet" type="text/css"></link>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
-<script data-require="angular.js@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular.js"></script>
-  <script data-require="angular-animate@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular-animate.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script data-require="angular.js@*" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular.js"></script>
+  <script data-require="angular-animate@*" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular-animate.js"></script>
+
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="./js/teacherController.js"></script>
+<script type="text/javascript" src="./teacherController.js"></script>
 </head>
 <body>
 
-<div ng-controller="teacherController" class="container-fluid" >
+<div ng-controller="teacherController" ng-init="init()" class="container-fluid" >
              
 	<div class="col-md-2">
 	</div>
 	<div class="col-md-8">
 	  <h2 class="page-title">Teacher Registration</h2>
 		 <ul class="nav nav-pills ">
-   			 <li class="active"><a data-toggle="pill" href="#home">Basic info</a></li>
-    		<li><a data-toggle="pill" href="#menu1">Subject</a></li>
-   			 <li><a data-toggle="pill" href="#menu2">Availability</a></li>
+   			 <li id = "pill1" class="active"><a ng-click = "pill = 1" data-toggle="pill" href="#home">Basic info</a></li>
+    		<li  ><a id="pill2" ng-click = "pill = 2" data-toggle="pill" href="#menu1">Subjects</a></li>
+   			 <li id="pill3" ><a ng-click = "pill = 3" data-toggle="pill" href="#menu2">Availability</a></li>
   		</ul>
   
  	 <div class="tab-content">
-    	<div id="home" class="tab-pane fade in active" >
+    	<div id="home" class="tab-pane fade in active" ng-show="pill === 1">
     	<br>
-     	<form  name="f1" ng-submit="Register(TeacherData)"  role="form" novalidate>
+     	<form  name="f1" ng-submit="Register(TeacherData); "  role="form" novalidate>
                <div class="row form-group">
 					<label for="cFirstname" class="control-label col-md-2">First Name : </label>
                     <div class="col-md-3">
@@ -62,9 +62,9 @@
                            <div class="col-md-3">
  
 					      	<select class="form-control input-sm" id="cLocation" ng-model="TeacherData.State" ng-required>
-						        <option>FL</option>
-						        <option>GA</option>
-						        <option>NC</option>
+						      <option ng:repeat="state in States" value="{{state}}">     
+                {{state}}
+            </option>
 						      </select>
                               
                             </div>
@@ -97,7 +97,7 @@
                      <div class="row" form-group>   
                      <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-warning" ng-disabled="f1.$invalid || f1.cFirstname.$pristine || f1.cLastName.$pristine || f1.cEmail.$pristine || f1.cPhone.$pristine || f1.cLocation.$pristine || f1.cPassword.$pristine || f1..$pristine || f1..$pristine || f1..$pristine || f1.cRePassword.$pristine ">Next</button>
-                     <button type="button" class="btn btn-warning" ng-click="TeacherRegStep1Save(TeacherData)" ng-disabled="f1.$invalid || f1.cFirstname.$pristine || f1.cLastName.$pristine || f1.cEmail.$pristine || f1.cPhone.$pristine || f1.cLocation.$pristine || f1.cPassword.$pristine || f1..$pristine || f1..$pristine || f1..$pristine || f1.cRePassword.$pristine ">Save &amp; Exit</button>
+                     <button type="button" id="btn2" class="btn btn-warning" ng-click="TeacherRegStep1Save(TeacherData)" ng-disabled="f1.$invalid || f1.cFirstname.$pristine || f1.cLastName.$pristine || f1.cEmail.$pristine || f1.cPhone.$pristine || f1.cLocation.$pristine || f1.cPassword.$pristine || f1..$pristine || f1..$pristine || f1..$pristine || f1.cRePassword.$pristine ">Save &amp; Exit</button>
                      <button type="button" class="btn btn-warning" ng-click="TeacherRegStep1Skip()" ng-disabled="f1.$invalid || f1.cFirstname.$pristine || f1.cLastName.$pristine || f1.cEmail.$pristine || f1.cPhone.$pristine || f1.cLocation.$pristine || f1.cPassword.$pristine || f1..$pristine || f1..$pristine || f1..$pristine || f1.cRePassword.$pristine ">Skip</button>
     				</div>
     				</div>
@@ -115,10 +115,10 @@
                         </table>
                         </form>
    		 </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Subjects</h3>
+    <div id="menu1" class="tab-pane fade" ng-show="pill === 2">
+      <h3>Please select Subjects : Your teacher ID is {{teacherID}}</h3>
     </div>
-    <div id="menu2" class="tab-pane fade">
+    <div id="menu2" class="tab-pane fade" ng-show="pill === 3">
       <h3>Availability</h3>
     </div>
  
