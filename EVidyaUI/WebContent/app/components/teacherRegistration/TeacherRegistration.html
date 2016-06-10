@@ -1,0 +1,71 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="evidyaUI">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Teacher Registration</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href='/assets/css/style.css' rel="stylesheet" type="text/css"></link>
+<link href='/assets/css/font-awesome.css' rel="stylesheet" type="text/css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script data-require="angular.js@*" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular.js"></script>
+  <script data-require="angular-animate@*" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular-animate.js"></script>
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./teacherController.js"></script>
+</head>
+<body>
+
+<div ng-controller="teacherRegController" ng-init="init()" class="container-fluid" >
+             
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-8">
+	  <h2 class="page-title">Teacher Registration</h2>
+		 <ul class="nav nav-pills ">
+    		<li class="active" ><a id="pill1" ng-click = "pill = 1" data-toggle="pill" href="#menu1">Subjects</a></li>
+   			 <li id="pill2" ><a ng-click = "pill = 2" data-toggle="pill" href="#menu2">Availability</a></li>
+   			  <li id="pill3" ><a ng-click = "pill = 3" data-toggle="pill" href="#menu3">Basic Information</a></li>
+  		</ul>
+  
+ 	 <div class="tab-content">
+    	
+    <div id="menu1" class="tab-pane fade in active" >
+      <h3>Please select Subjects : Your teacher ID is {{teacherID}}</h3>
+      <form  name="f1" ng-submit="SaveSubjects(selected.grades); "  role="form" novalidate>
+               <div class="row form-group">
+               <label class="col-md-1">Select Grade : </label>
+					<div ng-repeat='grade in grades'>
+					
+					 <label class="checkbox-inline col-md-2">
+       				 <input type="checkbox"  checklist-model="selected.grades" checklist-value="grade.grade_ID" " />
+        			{{grade.grade_SHORT_DESC}}
+      				</label>
+    			</div>
+    			
+                </div>
+                
+                     <div class="row" form-group>   
+                     <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-warning" >Next</button>
+                     <button type="button" id="btn2" class="btn btn-warning" >Save &amp; Exit</button>
+                     <button type="button" class="btn btn-warning" >Skip</button>
+    				</div>
+    				</div>
+                </form>
+    </div>
+    <div id="menu2" class="tab-pane fade" >
+      <h3>Availability</h3>
+    </div>
+  <div id="menu3" class="tab-pane fade" >
+      <h3>Basic Information</h3>
+    </div>
+  </div>
+     </div>
+     <div class="col-md-2">
+     </div>           
+	</div>
+
+</body>
+</html>
