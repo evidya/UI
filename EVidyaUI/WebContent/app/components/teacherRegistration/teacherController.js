@@ -12,7 +12,14 @@ teacherModule.service('teacherDataService', function($window){
 	
 	var getID = function(){
 		
-		return $window.sessionStorage.getItem('teacherID');;
+		if("teacherID" in $window.sessionStorage)
+		{
+			return $window.sessionStorage.getItem('teacherID');
+		}
+		else
+		{
+			return teacherID;
+		};
 	};
 	
 	return {
@@ -112,7 +119,9 @@ teacherModule.controller('teacherRegController', function ( $scope,$http, $windo
      	$scope.pill = 1;
      	$scope.teacherID = teacherDataService.getID();
      	$scope.selected = {
-     			grades : []
+     			grades : [],
+     			primary : [],
+     			experience : []
      	};
      	//get the grades list for this ID
      	var callPrmise = $http({
@@ -135,20 +144,51 @@ teacherModule.controller('teacherRegController', function ( $scope,$http, $windo
             });
      	
      	//get the master subjects TBD
+     
+     
+     	var callPrmise1 = $http({
+            method  : 'GET',
+            url     : 'http://localhost:8012/getMasterSubjects?teacherID=' +  teacherDataService.getID(),
+          
+            headers : {'Content-Type': 'application/json; charset=utf-8'} 
+           });
      	
+     	callPrmise1.then(function(data) {
+              if (data.errors) {
+                // Showing errors.
+                $scope.errorName = data.errors.name;
+                $scope.errorUserName = data.errors.username;
+                $scope.errorEmail = data.errors.email;
+              } else {
+                $scope.mastersubjects = data.data;
+                alert(data.data)
+              }
+            });
      };
      
-     $scope.SaveSubjects = function(grades) {
-// 		alert('in save subjects function , grades ' + $scope.selected.grades);
- 		for (grade in $scope.selected.grades)
- 			{
- 				if(grade.checked)
- 					{
- 					alert(grade);
- 					}
- 			}
- 		
+     $scope.SaveSubjects = function(selected) {
+// 		for (grade in $scope.selected.grades)
+// 			{
+// 				alert(grade)
+// 			}
+// 		for (exp in $scope.selected.experience)
+//			{
+//				alert(exp)
+//			}
+// 		for (sub in $scope.selected.primary)
+//			{
+//				alert(sub)
+//			}
+    	alert('in save subjets')
+    	 	angular.element('#pill2').trigger('click');
          };
+         
+         //handle availability form submission
+         
+         $scope.SaveAvailability = function(Availability) {
+         	alert('in save availibility' + Availability.timezone)
+         	 	angular.element('#pill3').trigger('click');
+              };
 		});
 
 
